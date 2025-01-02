@@ -1,0 +1,60 @@
+application:
+  host: http://localhost:8080/
+  security:
+    token-secret-key: ${TOKEN_SECRET_KEY}
+    encryption-algorithm: ${ENCRYPTION_ALGORITHM}
+    encryption-secret-key: ${ENCRYPTION_SECRET_KEY}
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/aura-auth
+    #username: root //inserted from Vault
+    #password: test //inserted from Vault
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+
+          azure:
+            client-id: ${AZURE_CLIENT_ID}
+            client-secret: ${AZURE_CLIENT_SECRET}
+
+  cloud:
+    vault:
+      kv:
+        enabled: false
+        default-context: scaler-app
+      scheme: http
+      authentication: APPROLE
+      database:
+        enabled: true
+        role: scaler-postgres-role
+
+  config:
+    import: vault://
+
+  mail:
+    username: ${DEV_MAIL_USERNAME}
+    password: ${DEV_MAIL_PASSWORD}
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace
