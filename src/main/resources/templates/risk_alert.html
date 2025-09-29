@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AURA</title>
+  <style>
+    .btn:hover {
+      background-color: #CDFF3A !important;
+      color: #000 !important;
+    }
+
+    @media (max-width: 375px) {
+      .btn {
+        padding-inline: 20px !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 14px; color: #000">
+
+<table style="width: 100%; max-width: 600px; margin: 0 auto;" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <table style="width: 100%; background-color: #fff; padding: 40px; border-radius: 5px;" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>
+            <p style="margin-block: 0 10px">Hello <strong th:text="${username}">[username]</strong>,</p>
+            <p style="margin-block: 0 10px">We detected a <strong>high-risk activity</strong> on your account. For your security, please review your recent actions.</p>
+            <p style="margin-block: 0 30px">If this wasn’t you, we recommend <strong>to log out thus device</strong> immediately and checking your other connected devices.</p>
+            <a th:href="${link}" class="btn" style="display: block; background-color: #000; color: #fff; padding: 17px 40px; text-decoration: none; text-transform: uppercase; width: fit-content; text-align: center; transition: 0.2s ease-out;"><span>LOG OUT THIS DEVICE</span> →</a>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 100%; text-align: left; padding: 20px 40px; background-color: #ededed" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>
+            <p style="margin: 0">Best Regards,</p>
+            <p style="font-size: 18px; font-weight: 600; margin: 0">AURA</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
